@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Bottle Google Drive</title>
+	<link rel="stylesheet" type="text/css" href="static/style.css">
+	<link rel="icon" type="image/x-icon" href="/static/favicon.ico">
+</head>
+<body>
+
+	<h1>Arquivos do seu Storage</h1>
+
+	<form method="post" action="/upload" enctype="multipart/form-data">
+		<label id="labelFile" for="fileInput">Enviar Arquivos</label>
+		<input id="fileInput" type="file" name="fileInput" multiple />
+		<input id="submitInput" type="submit" value="Upload">
+	</form>
+
+	<main>
+		{% for file in files: %}
+		<div class="file">
+			<span class="fileName" title="{{file}}">{{file}}</span>
+			<a class="download" href="hash/{{file}}">Download</a>
+			<a class="delete" href="delete/{{file}}">Del</a>
+		</div>
+		{% endfor %}
+	</main>
+
+	<button id="btnTheme">Dark Mode</button>
+
+	<script src="static/script.js"></script>
+
+</body>
+</html>
